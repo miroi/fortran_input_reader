@@ -1,0 +1,17 @@
+!-------------------------------------------------------------
+!
+! Sample input file for input_reader
+!
+!-------------------------------------------------------------
+**DIAG
+.TITLE
+  some title
+! print level 
+.PRINT
+3
+! File name with the Hermitian matrix to be diagonalized
+.MTXFILE
+Jz_SS_matrix.fermirp2-2
+# check LAPACK's routine DSYEVR (real only matrices)
+.DSYEVR
+*END OF
