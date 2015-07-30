@@ -92,12 +92,11 @@
  program Test_input_reader_1
   use example_data_cfg
   call read_input_file
-  print *,title_text
-  print *,title_text2
-  print *,matrix_file_name
-  print *,print_level
-  print *,do_this
-  print *,factor1
-
+  !print *,title_text
+  !print *,title_text2
+  !print *,matrix_file_name
+  !print *,print_level
+  !print *,do_this
+  !print *,factor1
   print *,'Hello World!'
  end program
