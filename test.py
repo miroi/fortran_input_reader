@@ -11,10 +11,6 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 # ------------------------------------------------------------------------------
 
-
-# ------------------------------------------------------------------------------
-
-
 def exe(command):
     """
     Executes command and returns string representations of stdout and stderr captured from the console.
