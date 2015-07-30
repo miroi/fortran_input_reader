@@ -18,13 +18,20 @@ Usage:
   ./setup.py (-h | --help)
 
 Options:
-  --static                   Enable static linking [default: False].
-  --type=<TYPE>              Set the CMake build type (debug, release, or relwithdeb) [default: release].
-  --generator=<STRING>       Set the CMake build system generator [default: Unix Makefiles].
-  --show                     Show CMake command and exit.
-  --cmake-options=<OPTIONS>  Define options to CMake [default: None].
-  <builddir>                 Build directory.
-  -h --help                  Show this screen.
+  --fc=<FC>                           Fortran compiler [default: gfortran].
+  --extra-fc-flags=<EXTRA_FCFLAGS>    Extra Fortran compiler flags [default: ''].
+  --fc-support=<FC_SUPPORT>           Toggle Fortran language support (ON/OFF) [default: ON].
+  --cc=<CC>                           C compiler [default: gcc].
+  --extra-cc-flags=<EXTRA_CFLAGS>     Extra C compiler flags [default: ''].
+  --cxx=<CXX>                         C++ compiler [default: g++].
+  --extra-cxx-flags=<EXTRA_CXXFLAGS>  Extra C++ compiler flags [default: ''].
+  --coverage                          Enable code coverage [default: False].
+  --type=<TYPE>                       Set the CMake build type (debug, release, or relwithdeb) [default: release].
+  --generator=<STRING>                Set the CMake build system generator [default: Unix Makefiles].
+  --show                              Show CMake command and exit.
+  --cmake-options=<OPTIONS>           Define options to CMake [default: None].
+  <builddir>                          Build directory.
+  -h --help                           Show this screen.
 """
 
 
@@ -34,8 +41,15 @@ def gen_cmake_command(options, arguments):
     """
     command = []
     command.append('FC=%s' % arguments['--fc'])
+    command.append('CC=%s' % arguments['--cc'])
+    command.append('CXX=%s' % arguments['--cxx'])
     command.append('cmake')
-    command.append('-DENABLE_STATIC_LINKING=%s' % arguments['--static'])
+    command.append('-DEXTRA_FCFLAGS="%s"' % arguments['--extra-fc-flags'])
+    command.append('-DENABLE_FC_SUPPORT="%s"' % arguments['--fc-support'])
+    command.append('-DEXTRA_CFLAGS="%s"' % arguments['--extra-cc-flags'])
+    command.append('-DEXTRA_CXXFLAGS="%s"' % arguments['--extra-cxx-flags'])
+    command.append('-DENABLE_CODE_COVERAGE=%s' % arguments['--coverage'])
+    command.append('-DGOOGLETEST_ROOT=external/googletest')
     command.append('-DCMAKE_BUILD_TYPE=%s' % arguments['--type'])
     command.append('-G "%s"' % arguments['--generator'])
     if(arguments['--cmake-options']):
