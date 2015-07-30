@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/miroi/fortran_input_reader.svg?branch=master)](https://travis-ci.org/miroi/fortran_input_reader/builds)
+
 Fortran Input Reader
 ====================
 
