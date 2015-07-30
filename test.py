@@ -11,6 +11,7 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 # ------------------------------------------------------------------------------
 
+
 def exe(command):
     """
     Executes command and returns string representations of stdout and stderr captured from the console.
@@ -29,6 +30,7 @@ def exe(command):
                                       universal_newlines=True).communicate()
 
     if stderr:
+
         sys.stderr.write(stderr)
 
     return stdout, stderr
@@ -66,8 +68,7 @@ def configure_build_and_exe(name, setup_command):
 
 # ------------------------------------------------------------------------------
 
+
 def test_examples():
     stdout, stderr = configure_build_and_exe('', 'python setup.py --fc=gfortran')
     assert 'Hello World!' in stdout
-
-# ------------------------------------------------------------------------------
