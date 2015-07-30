@@ -1,6 +1,7 @@
 !-------------------------------------------------------------
 !
-! Sample input file for input_reader
+!     Sample input file for demonstrating and testing  
+!       the *input_reader* library
 !
 !-------------------------------------------------------------
 **DIAG
@@ -9,9 +10,24 @@
 ! print level 
 .PRINT
 3
-! File name with the Hermitian matrix to be diagonalized
+! keyword for reading character (here matrix file name)
 .MTXFILE
 Jz_SS_matrix.fermirp2-2
-# check LAPACK's routine DSYEVR (real only matrices)
-.DSYEVR
+#  keyord for initialization of logical variable
+.DOTHIS
+**SECT2
+.TITLE
+ section2 title
+! print level 
+.PRINT
+0
+! keyword for sequence of integer numbers
+!.NEL_F1
+!450 450 13 12 5 5 1 1
+! keyword for one real*8 number
+.FACT1
+ 0.05d0
+! keyword for two real*8 numbers
+!.FACT2
+! -12.0D0  12.37D0
 *END OF
