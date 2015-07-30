@@ -97,6 +97,8 @@ def configure_build_and_exe(name, setup_command):
 
     if sys.platform == 'win32':
         stdout, stderr = exe('mingw32-make')
+        shutil.copy('..\src\examples\EXAMPLE.INP', 'bin\EXAMPLE.INP')
+        os.chdir('bin')
         stdout, stderr = exe('example1.exe')
     else:
         stdout, stderr = exe('make')

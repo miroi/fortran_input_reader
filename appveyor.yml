@@ -10,6 +10,8 @@
 # Notes:
 # Where "ps:" is used commands are executed in PowerShell
 ##
+##   Script assembled by Ivan Hrasko
+##
 
 # build version format: 1.0.1, 1.0.2, ...
 version: 1.0.{build}
@@ -62,6 +64,4 @@ test_script:
 - echo %path%
 - py.test --version
 # run tests
-- py.test -vv update.py
-- py.test -vv test/test.py
-- py.test -vv lib/config.py
+- py.test -vv test.py
