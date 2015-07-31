@@ -55,14 +55,14 @@ def configure_build_and_exe(name, setup_command):
 
     if sys.platform == 'win32':
         stdout, stderr = exe('mingw32-make')
-        shutil.copy('..\src\examples\EXAMPLE.INP', 'bin\EXAMPLE.INP')
+        shutil.copy('..\src\example\EXAMPLE.INP', 'bin\EXAMPLE.INP')
         os.chdir('bin')
-        stdout, stderr = exe('example1.exe')
+        stdout, stderr = exe('example.exe')
     else:
         stdout, stderr = exe('make')
-        shutil.copy('../src/examples/EXAMPLE.INP', 'bin/EXAMPLE.INP')
+        shutil.copy('../src/example/EXAMPLE.INP', 'bin/EXAMPLE.INP')
         os.chdir('bin')
-        stdout, stderr = exe('./example1')
+        stdout, stderr = exe('./example')
 
     return stdout, stderr
 
@@ -70,5 +70,5 @@ def configure_build_and_exe(name, setup_command):
 
 
 def test_examples():
-    stdout, stderr = configure_build_and_exe('', 'python setup.py --fc=gfortran')
+    stdout, stderr = configure_build_and_exe('', 'python setup.py')
     assert 'Hello World!' in stdout

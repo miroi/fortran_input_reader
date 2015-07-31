@@ -3,6 +3,6 @@ add_library(input_reader
         lib/input_reader.F90
         lib/parse_input.F90)
 
-add_executable(example1 examples/example1.F90)
+add_executable(example example/example.F90)
 
-target_link_libraries(example1 input_reader)
+target_link_libraries(example input_reader)

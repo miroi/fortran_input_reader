@@ -1,5 +1,5 @@
  module example_data_cfg
- ! module for storing/sharing data which are read from dedicated text input file
+ ! module for storing are sharing data which are read from the text input file
   character*50 :: title_text, title_text2
   integer :: print_level, print_level2
   character*20 :: matrix_file_name
@@ -20,7 +20,7 @@
   if (.not.input_found) then
    stop "input file not found !"
   endif
-  ! routine from src/lib/
+  ! library routine
   call read_menu_input(inpfile, lucmd, 'ALL', input_found)
  end subroutine read_input_file
 
@@ -97,6 +97,6 @@
   !print *,matrix_file_name
   !print *,print_level
   !print *,do_this
-  !print *,factor1
+  print *,factor1
   print *,'Hello World!'
  end program
