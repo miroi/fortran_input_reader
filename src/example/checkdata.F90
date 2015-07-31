@@ -1,13 +1,22 @@
+ ! Check selected read data
  subroutine check_read_data(correct)
   use example_data_cfg
   logical, intent(inout) :: correct
   correct = .true.
+
  ! print *,title_text1
  ! print *,title_text2
  ! print *,file_name
  ! print *,print_level2
  ! print *,do_this
  ! print *,factor1
+
+  if (have_lb94.eqv..true.) then
+   print *,'character*4 string reading ok'
+  else
+   print *,'character*4 string reading FAILED!'
+   correct = .false.
+  endif
 
   if (do_this.eqv..true.) then
    print *,'logical variable reading ok'

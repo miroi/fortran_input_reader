@@ -6,7 +6,7 @@
 Fortran Input Reader
 ====================
 
-All-Fortran90 reader of most common types of input keywords (string, numbers..) from a text file.
+All-Fortran90 reader of most common input keywords types (strings, numbers, number arrays) from a text file.
 
 This project also serves as the comprehensive (unit) tester of the standalone Fortran module (library).
 
@@ -23,12 +23,12 @@ Testing and buildup
 -------------------
 The project buildup and testing is based on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
-For quick testing (needs pytest), type:
+For quick testing (needs pytest) of the cloned project, type:
 ```
  py.test -v test.py
 ```
 
-For the buildup (needs fortran) and subsequent testing, use:
+For the buildup (you need fortran) and subsequent testing, pad:
 ```
  python setup.py 
  cd build

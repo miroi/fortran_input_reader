@@ -3,7 +3,7 @@
   character*50 :: title_text1, title_text2
   integer :: print_level1, print_level2
   character*20 :: file_name
-  logical :: do_this=.false.
+  logical :: do_this=.false.,have_lb94=.false.
   integer :: nelec_f1(16)
   real*8  :: factor1,factor21,factor22
  end module example_data_cfg
@@ -45,6 +45,7 @@
   use input_reader
   use example_data_cfg
   implicit none
+  character*4 :: first_4
   character(kw_length), intent(in) :: word
   character(kw_length), intent(in) :: kw_section
   call reset_available_kw_list()
@@ -60,6 +61,10 @@
   if (kw_matches(word, '.DOTHIS')) then
    do_this = .true.
   end if
+  if (kw_matches(word, '.GRAC  ')) then
+    read(get_file_unit(), '(a4)') first_4
+    if (lowercase(first_4) == 'lb94') have_lb94=.true.
+  endif
   call check_whether_kw_found(word, kw_section)
  end subroutine
 

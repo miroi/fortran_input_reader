@@ -13,6 +13,9 @@
 ! keyword for reading character (here matrix file name)
 .MTXFILE
 Jz_SS_matrix.fermirp2-2
+! keyword for subsequent reading (and evaluating) of string
+.GRAC
+lb94
 #  keyord for initialization of logical variable
 .DOTHIS
 **SECT2
