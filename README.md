@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/miroi/fortran_input_reader.svg?branch=master)](https://travis-ci.org/miroi/fortran_input_reader/builds)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/miroi/fortran_input_reader?branch=master&svg=true)](https://ci.appveyor.com/project/miroi/fortran_input_reader/history)
-[![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=release)](https://coveralls.io/r/miroi/fortran_input_reader?branch=master)
+[![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=master&service=github)](https://coveralls.io/github/miroi/fortran_input_reader?branch=master)
 
 
 Fortran Input Reader
