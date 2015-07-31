@@ -4,7 +4,6 @@
 [![Coverity Scan Build](https://scan.coverity.com/projects/5926/badge.svg)](https://scan.coverity.com/projects/5926)
 
 
-====================
 Fortran Input Reader
 ====================
 
@@ -12,24 +11,27 @@ All-Fortran90 reader of most common types of input keywords (string, numbers..) 
 
 This project serves as comprehensive tester of the standalone Fortran module (library).
 
-Files for free distribution are src/lib/input_reader.F90 and src/lib/parse_input.F90.
+Files for free distribution are input_reader.F90 (https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) 
+and parse_input.F90 (https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90).
 
 Input Reader documentation: http://diracprogram.org/doc/master/programmers/input_reading.html
 
 Testing and buildup
 -------------------
-The project's buildup and testing is based on *autocmake* project, https://github.com/scisoft/autocmake.
+The project buildup and testing is based on *autocmake* project, https://github.com/scisoft/autocmake.
 
 For testing (needs pytest), type:
-::
- py.test test.py
+```
+ py.test -v test.py
+```
 
-For buildup (needs fortran), type:
-::
+For buildup (needs fortran) and testing, type:
+```
  python setup.py 
  cd build
  make
-
-
-
+ cd bin
+ cp ../src/example/EXAMPLE.INP .a
+ example
+```
 
