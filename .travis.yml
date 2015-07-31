@@ -1,23 +1,10 @@
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "D0SoGlXmg8pJSzcVUfzIN+NICoLOflm9ssqQth+yhtsoAGd8l/TrIUGRLmIJCOqjtCvlbqQ84lRTGMl65djWExFR8aicBvULhRfof+EQ9nYmTpsvrYEEXtDQD/2NBSyTKzIk5ced03TTmZ4LyzCS2eeyxsBIze1ys0dfpcX1SbtLWQl9vEWLcksrxwmsV0bpFzlLQuHHjIMyX/WgIkqs1TMO7ftAVjJjBNjrBjv0lMYJzFK3nTAO+fbeVb/1ImkCUpCKCq3bPS8Hpqd6zf0xG0F9yjjfPk9iXki8XB1eqZHvM/+th2chofqr8WT5PYJ64SG5P7CVzwNvltGX/Yvsapi2RQ9594MHtJP/V7DVPFx+vXqqD6LqeSehGp/5JoVRgek9bUlJC8JsM4NAKbrdc07Evjk98rDSvFZkqBnctYhbYalHfUrX8GVPdItySVkGu4dWTDIKlZosMOf1IS/kga1E0TvnXYLXWw58JHYekllkPeprTq6EP0b6eVcWQARiesxJJliTsKfnIDMg6UU3YYZWCpAglEtNZcYrluElxzmSkmBtqqEmZ4n5+XYcDCgd34/kekcOiAEQpC/AmmInMxmQRAKdCg6nK0UzFFbvyp6mEOklzUXyxXpFVhvIZ9AeBfQ9DCpwDTY8LbqBuyN1ZSEn3IB14qfoHVDmESzgftk="
-   
-  addons:
-    coverity_scan:
-      project:
-        name: "miroi/fortran_input_reader"
-        description: "Build submitted via Travis CI"
-        notification_email: miroslav.ilias@umb.sk
-        build_command_prepend: "python ./setup; cd build"
-        build_command:   "make"
-        branch_pattern: coverity_scan
-
-language: cpp
+language: fortran
 install:
-  - sudo apt-get install g++ cmake gfortran libblas-dev
-  - sudo pip install pytest pep8
+  - sudo apt-get install g++ cmake gfortran libblas-dev ggcov
+  - sudo pip install pytest pep8 cpp-coveralls
 script:
   - pep8 --ignore=E501 test.py
   - py.test -vv test.py
+after_success:
+  - coveralls --gcov /usr/bin/gcov --root .. --extension .F90 -E ".*external.*" -E ".*CMakeFiles.*" -E ".*generated.*" -E ".*test_.*"
+

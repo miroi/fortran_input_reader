@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/miroi/fortran_input_reader.svg?branch=master)](https://travis-ci.org/miroi/fortran_input_reader/builds)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/miroi/fortran_input_reader?branch=master&svg=true)](https://ci.appveyor.com/project/miroi/fortran_input_reader/history)
-[![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=release)](https://coveralls.io/r/miroi/fortran_input_reader?branch=release)
-[![Coverity Scan Build](https://scan.coverity.com/projects/5926/badge.svg)](https://scan.coverity.com/projects/5926)
+[![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=release)](https://coveralls.io/r/miroi/fortran_input_reader?branch=master)
 
 
 Fortran Input Reader
@@ -24,12 +23,12 @@ Testing and buildup
 -------------------
 The project buildup and testing is based on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
-For testing (needs pytest), type:
+For quick testing (needs pytest), type:
 ```
  py.test -v test.py
 ```
 
-For the buildup (needs fortran) and subsequent testing, type:
+For the buildup (needs fortran) and subsequent testing, use:
 ```
  python setup.py 
  cd build
@@ -38,8 +37,10 @@ For the buildup (needs fortran) and subsequent testing, type:
  cp ../../src/example/EXAMPLE.INP .
  example
 ```
-Upon successfull finish of the executable code you should get in the last printed line
+Upon successfull finish of the executable code you should see the last printed line
 ```
+.
+.
 Fortran Input Reader OK!
 ```
 
