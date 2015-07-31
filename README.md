@@ -9,12 +9,13 @@ Fortran Input Reader
 
 All-Fortran90 reader of most common types of input keywords (string, numbers..) from text filexs.
 
-This project serves as comprehensive tester of the standalone Fortran module (library).
+This project serves as comprehensive (unit) tester of the standalone Fortran module (library).
 
-Two main files for free distribution into your codes  are 
+Two main files for free distribution into your codes are 
 [input_reader.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) 
 and [
 parse_input.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90).
+Note that you have to supply the QUIT routine (part of DIRAC and Dalton programs).
 
 The input reader documentation is on the [DIRAC web-page](http://diracprogram.org/doc/master/programmers/input_reading.html).
 
@@ -27,13 +28,17 @@ For testing (needs pytest), type:
  py.test -v test.py
 ```
 
-For buildup (needs fortran) and testing, type:
+For the buildup (needs fortran) and subsequent testing, type:
 ```
  python setup.py 
  cd build
  make
  cd bin
- cp ../src/example/EXAMPLE.INP .a
+ cp ../../src/example/EXAMPLE.INP .
  example
+```
+Upon successfull finish of the executable code you should get
+```
+Fortran Input Reader OK!
 ```
 

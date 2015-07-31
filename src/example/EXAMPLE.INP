@@ -4,10 +4,10 @@
 !       the *input_reader* library
 !
 !-------------------------------------------------------------
-**DIAG
+**SECT1
 .TITLE
   some title
-! print level 
+! print level, keyword for reading integer
 .PRINT
 3
 ! keyword for reading character (here matrix file name)
@@ -20,14 +20,14 @@ Jz_SS_matrix.fermirp2-2
  section2 title
 ! print level 
 .PRINT
-0
+5
 ! keyword for sequence of integer numbers
-!.NEL_F1
-!450 450 13 12 5 5 1 1
+.NEL_F1
+450 450 13 12 -5 7
 ! keyword for one real*8 number
 .FACT1
  0.05d0
 ! keyword for two real*8 numbers
-!.FACT2
-! -12.0D0  12.37D0
+.FACT2
+ -12.0D0  1.370D0
 *END OF

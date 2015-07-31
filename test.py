@@ -71,4 +71,4 @@ def configure_build_and_exe(name, setup_command):
 
 def test_examples():
     stdout, stderr = configure_build_and_exe('', 'python setup.py')
-    assert 'Hello World!' in stdout
+    assert 'Fortran Input Reader OK!' in stdout

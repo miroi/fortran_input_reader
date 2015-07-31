@@ -1,8 +1,8 @@
  module example_data_cfg
  ! module for storing are sharing data which are read from the text input file
-  character*50 :: title_text, title_text2
-  integer :: print_level, print_level2
-  character*20 :: matrix_file_name
+  character*50 :: title_text1, title_text2
+  integer :: print_level1, print_level2
+  character*20 :: file_name
   logical :: do_this=.false.
   integer :: nelec_f1(16)
   real*8  :: factor1,factor21,factor22
@@ -10,7 +10,7 @@
 
  subroutine read_input_file
  ! open and read the input file
-  use input_reader
+  !use input_reader
   implicit none
   logical :: input_found
   integer :: lucmd = 5
@@ -30,8 +30,8 @@
   character(kw_length), intent(in) :: word
   character(kw_length), intent(in) :: kw_section
   select case (kw_section)
-   case ('**DIAG ')
-    call read_example_input_diag(word, kw_section)
+   case ('**SECT1')
+    call read_example_input_sect1(word, kw_section)
    case ('**SECT2')
     call read_example_input_sect2(word, kw_section)
    case default
@@ -40,7 +40,7 @@
   end select
  end subroutine
 
- subroutine read_example_input_diag(word, kw_section)
+ subroutine read_example_input_sect1(word, kw_section)
  ! read input data of the **DIAG section
   use input_reader
   use example_data_cfg
@@ -49,13 +49,13 @@
   character(kw_length), intent(in) :: kw_section
   call reset_available_kw_list()
   if (kw_matches(word, '.TITLE ')) then
-   call kw_read(word, title_text)
+   call kw_read(word, title_text1)
   end if
   if (kw_matches(word, '.PRINT ')) then
-   call kw_read(word, print_level)
+   call kw_read(word, print_level1)
   end if
   if (kw_matches(word, '.MTXFIL')) then
-   call kw_read(word, matrix_file_name)
+   call kw_read(word, file_name)
   end if
   if (kw_matches(word, '.DOTHIS')) then
    do_this = .true.
@@ -80,23 +80,18 @@
   if (kw_matches(word, '.FACT1 ')) then
    call kw_read(word,factor1)
   end if
+  if (kw_matches(word, '.FACT2 ')) then
+   call kw_read(word,factor21,factor22)
+  end if
+  if (kw_matches(word, '.NEL_F1')) then
+   call kw_read(word,nelec_f1)
+  end if
   call check_whether_kw_found(word, kw_section)
  end subroutine
 
- subroutine QUIT(TEXT)
-  CHARACTER TEXT*(*)
-  print *,TEXT
-  stop 
- end subroutine
-
- program Test_input_reader_1
-  use example_data_cfg
+ program Test_input_reader
+  logical :: correct = .false.
   call read_input_file
-  !print *,title_text
-  !print *,title_text2
-  !print *,matrix_file_name
-  !print *,print_level
-  !print *,do_this
-  print *,factor1
-  print *,'Hello World!'
+  call check_read_data(correct)
+  if (correct) print *,'Fortran Input Reader OK!'
  end program
