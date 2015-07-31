@@ -70,5 +70,5 @@ def configure_build_and_exe(name, setup_command):
 
 
 def test_examples():
-    stdout, stderr = configure_build_and_exe('', 'python setup.py')
+    stdout, stderr = configure_build_and_exe('', 'python setup.py --fc=gfortran --coverage')
     assert 'Fortran Input Reader OK!' in stdout
