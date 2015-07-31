@@ -33,4 +33,19 @@ lb94
 ! keyword for two real*8 numbers
 .FACT2
  -12.0D0  1.370D0
+! keyword for reading three real*8 numbers
+! some numbers can not be read !
+.FACT3
+ 1.202390D0  3.442838  -1.2830D0
+! 1.20D0+00  3.440D0+00  -1.2830D0-03
+! 7.520D0  126.3830D0   -1.28330D0
+! keyword for reading four real*8 numbers
+.FACT4
+ 7.523  -1.2   0.2939  -1.23D-08
+! keyword for reading two integer numbers - not yet implemented
+!.IFACT2
+!-127 394
+! keyword for reading three integer numbers
+.IFACT3
+394 -7383  729999
 *END OF

@@ -1,16 +1,18 @@
  module example_data_cfg
  ! module for storing are sharing data which are read from the text input file
+  implicit none
   character*50 :: title_text1, title_text2
   integer :: print_level1, print_level2
   character*20 :: file_name
   logical :: do_this=.false.,have_lb94=.false.
   integer :: nelec_f1(16)
-  real*8  :: factor1,factor21,factor22
+  integer :: ifact21,ifact22,ifact31,ifact32,ifact33
+  real*8  :: factor1,factor21,factor22,factor31,factor32,factor33
+  real*8  :: factor41,factor42,factor43,factor44
  end module example_data_cfg
 
  subroutine read_input_file
  ! open and read the input file
-  !use input_reader
   implicit none
   logical :: input_found
   integer :: lucmd = 5
@@ -88,13 +90,26 @@
   if (kw_matches(word, '.FACT2 ')) then
    call kw_read(word,factor21,factor22)
   end if
+  if (kw_matches(word, '.FACT3 ')) then
+   call kw_read(word,factor31,factor32,factor33)
+  end if
+  if (kw_matches(word, '.FACT4 ')) then
+   call kw_read(word,factor41,factor42,factor43)
+  end if
   if (kw_matches(word, '.NEL_F1')) then
    call kw_read(word,nelec_f1)
+  end if
+  !if (kw_matches(word, '.IFACT2')) then
+  ! call kw_read(word,ifact21,ifact22)
+  !end if
+  if (kw_matches(word, '.IFACT3')) then
+   call kw_read(word,ifact31,ifact32,ifact33)
   end if
   call check_whether_kw_found(word, kw_section)
  end subroutine
 
  program Test_input_reader
+  implicit none
   logical :: correct = .false.
   call read_input_file
   call check_read_data(correct)
