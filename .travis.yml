@@ -9,5 +9,5 @@ script:
   - pep8 --ignore=E501 test.py
   - py.test -vv test.py
 after_success:
-  - coveralls --gcov /usr/bin/gcov --root --extension .F90 -E ".*external.*" -E ".*CMakeFiles.*" -E ".*generated.*" -E ".*test_.*"
+  - coveralls --gcov /usr/bin/gcov  --extension .F90 -E ".*external.*" -E ".*CMakeFiles.*" -E ".*generated.*" -E ".*test_.*"
 
