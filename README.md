@@ -11,14 +11,16 @@ All-Fortran90 reader of most common types of input keywords (string, numbers..) 
 
 This project serves as comprehensive tester of the standalone Fortran module (library).
 
-Files for free distribution are input_reader.F90 (https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) 
-and parse_input.F90 (https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90).
+Two main files for free distribution into your codes  are 
+[input_reader.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) 
+and [
+parse_input.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90).
 
-Input Reader documentation: http://diracprogram.org/doc/master/programmers/input_reading.html
+The input reader documentation is on the [DIRAC web-page](http://diracprogram.org/doc/master/programmers/input_reading.html).
 
 Testing and buildup
 -------------------
-The project buildup and testing is based on *autocmake* project, https://github.com/scisoft/autocmake.
+The project buildup and testing is based on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
 For testing (needs pytest), type:
 ```
