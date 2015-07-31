@@ -11,14 +11,14 @@ All-Fortran90 reader of most common types of input keywords (string, numbers..) 
 
 This project also serves as the comprehensive (unit) tester of the standalone Fortran module (library).
 
-Two main files for free distribution into your codes are 
-[input_reader.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) 
+Two files for free distribution into your codes are 
+[input_reader.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) (as module)
 and [
-parse_input.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90).
+parse_input.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90) (as subroutine).
 Note that you have to supply the [QUIT routine](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/quit.F90)
-wich is part of DIRAC and Dalton programs.
+which is part of DIRAC and Dalton programs, from where the input reader comes.
 
-Some input reader advocasy is on the [DIRAC web-page](http://diracprogram.org/doc/master/programmers/input_reading.html).
+Some Fortran Input Reader advocacy is on the [DIRAC web-page](http://diracprogram.org/doc/master/programmers/input_reading.html).
 
 Testing and buildup
 -------------------
