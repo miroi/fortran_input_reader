@@ -1,6 +1,7 @@
-language: fortran
+language: c
+compiler: gcc
 install:
-  - sudo apt-get install g++ cmake gfortran libblas-dev ggcov
+  - sudo apt-get install g++ cmake gfortran libblas-dev ggcov-4.9
   - sudo pip install pytest pep8 cpp-coveralls
 script:
   - pep8 --ignore=E501 test.py
