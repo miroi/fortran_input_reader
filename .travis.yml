@@ -7,8 +7,8 @@ install:
   - sudo pip install pytest pep8 cpp-coveralls
 script:
   - cd cmake
-  - python update --self
-  - python update ..
+  - python update.py --self
+  - python update.py ..
   - cd ..
   - pep8 --ignore=E501 test.py
   - py.test -vv test.py
