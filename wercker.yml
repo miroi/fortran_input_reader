@@ -1,0 +1,39 @@
+##
+## Simple buildup configuration file for the Wercker-CI service http://devcenter.wercker.com/articles/werckeryml/
+##
+box: wercker/python
+
+build:
+  steps:
+    - install-packages:
+        packages: "gfortran cmake"
+
+    - script:
+        name: show system resources
+        code: |
+          lscpu
+          df -h
+          free -m
+
+    - script:
+        name: run and setup configuration script
+        code: |
+          cd cmake
+          wget https://github.com/scisoft/autocmake/raw/master/update.py
+          python update.py --self
+          python update.py ..
+          cd ..
+          python ./setup.py --fc=gfortran --int64 --static --coverage
+
+    - script:
+        name: build and test
+        code: |
+          cd build
+          make
+          ldd bin/example
+          cd bin
+          ./example
+
+## turn off email notifications
+notifications:
+        email: false

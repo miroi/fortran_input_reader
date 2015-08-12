@@ -13,7 +13,6 @@ script:
   - python setup.py --fc=gfortran --static --int64 --coverage
   - cd build
   - make VERBOSE=1
-  - ldd bin/example
   - cd bin
   - pwd
   - ./example
