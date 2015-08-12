@@ -9,12 +9,6 @@
 ##     http://diracprogram.org/doc/release-12/installation/int64/mpi.html
 ##
 
-# list of branches to build
-general:
-    branches:
-        only:
-            - master
-
 test:
     pre:
 # check our environment variables
