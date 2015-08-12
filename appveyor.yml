@@ -62,6 +62,12 @@ build_script:
 test_script:
 # show environment
 - echo %path%
-- py.test --version
-# run tests
-- py.test -vv test.py
+- cd cmake
+- python update.py --self
+- python update.py ..
+- cd ..
+- python setup.py --fc=gfortran --int64 --coverage
+- cd build
+- mingw32-make
+# run testing example
+- bin/example
