@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/miroi/fortran_input_reader.svg?branch=master)](https://travis-ci.org/miroi/fortran_input_reader/builds)
+[![wercker status](https://app.wercker.com/status/39f34b3fa3619e3b1ac48e9232ddb315/s "wercker status")](https://app.wercker.com/project/bykey/39f34b3fa3619e3b1ac48e9232ddb315)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/miroi/fortran_input_reader?branch=master&svg=true)](https://ci.appveyor.com/project/miroi/fortran_input_reader/history)
 [![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=master&service=github)](https://coveralls.io/github/miroi/fortran_input_reader?branch=master)
 
