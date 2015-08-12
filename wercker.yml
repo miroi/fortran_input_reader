@@ -16,6 +16,5 @@ build:
           python ./setup.py --fc=gfortran --int64 --coverage --static
           cd build
           make VERBOSE=1
-          ldd bin/example
           cd bin
           ./example
