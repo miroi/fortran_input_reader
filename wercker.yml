@@ -1,39 +1,21 @@
-##
-## Simple buildup configuration file for the Wercker-CI service http://devcenter.wercker.com/articles/werckeryml/
-##
-box: wercker/python
-
+box: nodesource/trusty
 build:
   steps:
+  # Execute the bundle install step, a step provided by wercker
+    - bundle-install
     - install-packages:
-        packages: "gfortran cmake"
-
+        packages: "gfortran cmake libblas-dev liblapack-dev"
     - script:
-        name: show system resources
-        code: |
-          lscpu
-          df -h
-          free -m
-
-    - script:
-        name: run and setup configuration script
+        name: run setup configuration script
         code: |
           cd cmake
           wget https://github.com/scisoft/autocmake/raw/master/update.py
           python update.py --self
           python update.py ..
           cd ..
-          python ./setup.py --fc=gfortran --int64 --static --coverage
-
-    - script:
-        name: build and test
-        code: |
+          python ./setup.py --fc=gfortran --int64 --coverage --static
           cd build
-          make
+          make VERBOSE=1
           ldd bin/example
           cd bin
           ./example
-
-## turn off email notifications
-notifications:
-        email: false
