@@ -6,6 +6,7 @@ install:
   - sudo pip install pytest pep8 cpp-coveralls
 script:
   - cd cmake
+  - wget https://github.com/scisoft/autocmake/raw/master/update.py
   - python update.py --self
   - python update.py ..
   - cd ..

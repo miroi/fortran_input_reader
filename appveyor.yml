@@ -49,15 +49,10 @@ build_script:
 # add compilers binary dir to path
 - set path=%path%;C:\software\mingw64\bin
 
-# download and upgrade pip
-- ps: wget https://bootstrap.pypa.io/get-pip.py -OutFile get-pip.py
-- python get-pip.py
-
-# install py.test
-- pip install pytest
-
 # go back to project source dir
 - cd %APPVEYOR_BUILD_FOLDER%
+- cd cmake
+- ps: wget https://github.com/scisoft/autocmake/raw/master/update.py -OutFile update.py
 
 test_script:
 # show environment
@@ -66,8 +61,9 @@ test_script:
 - python update.py --self
 - python update.py ..
 - cd ..
-- python setup.py --fc=gfortran --int64 --coverage
+- python setup.py --fc=gfortran --int64 --static  --coverage
 - cd build
 - mingw32-make
 # run testing example
-- bin/example
+- cd bin
+- example

@@ -17,21 +17,20 @@ test:
         - sudo apt-get update
         - sudo apt-get autoclean
         - sudo apt-get clean
-        - sudo apt-get install libatlas-base-dev libatlas-dev
-        - sudo apt-get install libopenblas-base
-        - sudo apt-get install libopenblas-dev
 # show info about available processors
         - lscpu
     override:
 # configure, build optimized code with OpenBLAS and run the test
         - cd cmake
+        - wget https://github.com/scisoft/autocmake/raw/master/update.py
         - python update.py --self
         - python update.py ..
         - cd ..
-        - python ./setup.py --fc=gfortran --int64 --coverage
+        - python ./setup.py --fc=gfortran --int64 --static --coverage
 # build with make, build with ctest makes impossible to submit more test commands into one entry on dashboard
         - make VERBOSE=1: { pwd: build }
 # ldd - show dirac.x dependencies
         - ldd bin/example: { pwd: build }
 # run tests
-        - bin/example:  { pwd: build }
+        - cd bin
+        - example:  { pwd: build/bin }
