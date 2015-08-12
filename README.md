@@ -25,10 +25,13 @@ Buildup and testing
 The project buildup is based solely on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
 
-For the buildup (you need python, cmakem fortran) and subsequent run, type:
+For the buildup and run you need python, cmake and fortran programs. 
+
+Type:
 ```
  cd cmake
  wget https://github.com/scisoft/autocmake/raw/master/update.py
+ python update.py --self
  python update.py ..
  cd ..
  python setup.py 
