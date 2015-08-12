@@ -1,5 +1,4 @@
-language: c
-compiler: gcc
+language: fortran
 install:
   - sudo apt-add-repository --yes ppa:ubuntu-toolchain-r/test
   - sudo apt-get update
@@ -15,3 +14,6 @@ script:
   - bin/example
 after_success:
   - coveralls --gcov /usr/bin/gcov  --extension .F90 -E ".*external.*" -E ".*CMakeFiles.*" -E ".*generated.*" -E ".*test_.*"
+
+notifications:
+  email: false
