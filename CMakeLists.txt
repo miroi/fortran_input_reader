@@ -21,10 +21,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/downloade
 
 # included cmake modules
 include(autocmake_fc_optional)
-include(autocmake_cc)
-include(autocmake_cxx)
-include(autocmake_GNU.CXX)
-include(autocmake_Intel.CXX)
+include(autocmake_GNU.Fortran)
+include(autocmake_Intel.Fortran)
+include(autocmake_PGI.Fortran)
+include(autocmake_XL.Fortran)
+include(autocmake_int64)
+include(autocmake_static_linking)
 include(autocmake_code_coverage)
 include(autocmake_safeguards)
 include(autocmake_default_build_paths)
