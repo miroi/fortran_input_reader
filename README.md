@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/miroi/fortran_input_reader.svg?branch=master)](https://travis-ci.org/miroi/fortran_input_reader/builds)
+[![Circle CI](https://circleci.com/gh/miroi/fortran_input_reader.svg?style=svg)](https://circleci.com/gh/miroi/fortran_input_reader)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/miroi/fortran_input_reader?branch=master&svg=true)](https://ci.appveyor.com/project/miroi/fortran_input_reader/history)
 [![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=master&service=github)](https://coveralls.io/github/miroi/fortran_input_reader?branch=master)
 
@@ -19,23 +20,21 @@ which is part of DIRAC and Dalton programs, from where the input reader comes.
 
 Some Fortran Input Reader advocacy is on the [DIRAC web-page](http://diracprogram.org/doc/master/programmers/input_reading.html).
 
-Testing and buildup
+Buildup and testing
 -------------------
-The project buildup and testing is based on the [*autocmake* project](https://github.com/scisoft/autocmake).
+The project buildup is based solely on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
-For quick testing (needs pytest) of the cloned project, type:
-```
- py.test -v test.py
-```
 
-For the buildup (you need fortran) and subsequent testing, pad:
+For the buildup (you need python, cmakem fortran) and subsequent run, type:
 ```
+ cd cmake
+ wget https://github.com/scisoft/autocmake/raw/master/update.py
+ python update.py ..
+ cd ..
  python setup.py 
  cd build
  make
- cd bin
- cp ../../src/example/EXAMPLE.INP .
- example
+ bin/example
 ```
 Upon successfull finish of the executable code you should see the last printed line
 ```
@@ -43,4 +42,3 @@ Upon successfull finish of the executable code you should see the last printed l
 .
 Fortran Input Reader OK!
 ```
-
