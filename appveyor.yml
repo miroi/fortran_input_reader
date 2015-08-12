@@ -48,6 +48,7 @@ build_script:
 
 # add compilers binary dir to path
 - set path=%path%;C:\software\mingw64\bin
+- echo %path%
 
 # go back to project source dir
 - cd %APPVEYOR_BUILD_FOLDER%
@@ -55,15 +56,13 @@ build_script:
 - ps: wget https://github.com/scisoft/autocmake/raw/master/update.py -OutFile update.py
 
 test_script:
-# show environment
-- echo %path%
-- cd cmake
+# 
 - python update.py --self
 - python update.py ..
 - cd ..
 - python setup.py --fc=gfortran --int64 --static  --coverage
 - cd build
-- mingw32-make
+- mingw32-make VERBOSE=1
 # run testing example
 - cd bin
 - example

@@ -10,9 +10,13 @@ script:
   - python update.py --self
   - python update.py ..
   - cd ..
-  - python setup.py --fc=gfortran --int64 --coverage
+  - python setup.py --fc=gfortran --static --int64 --coverage
   - cd build
-  - bin/example
+  - make VERBOSE=1
+  - ldd bin/example
+  - cd bin
+  - pwd
+  - example
 after_success:
   - coveralls --gcov /usr/bin/gcov  --extension .F90 -E ".*external.*" -E ".*CMakeFiles.*" -E ".*generated.*" -E ".*test_.*"
 

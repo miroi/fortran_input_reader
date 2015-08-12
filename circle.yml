@@ -22,10 +22,12 @@ test:
     override:
 # configure, build optimized code with OpenBLAS and run the test
         - cd cmake
+        - pwd
         - wget https://github.com/scisoft/autocmake/raw/master/update.py
         - python update.py --self
         - python update.py ..
         - cd ..
+        - pwd
         - python ./setup.py --fc=gfortran --int64 --static --coverage
 # build with make, build with ctest makes impossible to submit more test commands into one entry on dashboard
         - make VERBOSE=1: { pwd: build }
