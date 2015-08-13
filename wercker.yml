@@ -1,0 +1,29 @@
+box: nodesource/trusty
+build:
+  steps:
+  # Execute the bundle install step, a step provided by wercker
+    - bundle-install
+    - install-packages:
+        packages: "gfortran cmake wget"
+    - script:
+        name: run setup configuration script
+        code: |
+          cd cmake
+          wget https://github.com/scisoft/autocmake/raw/master/update.py
+          python update.py --self
+          python update.py ..
+          cd ..
+          python ./setup.py --fc=gfortran --int64 --coverage --static build_gfortran_int64_coverage_static
+          cd build_gfortran_int64_coverage_static
+          make VERBOSE=1
+          bin/example
+          cd ..
+          python ./setup.py --fc=gfortran --int64 build_gfortran_int64
+          cd build_gfortran_int64
+          make VERBOSE=1
+          bin/example
+          cd ..
+          python ./setup.py --fc=gfortran --static  build_gfortran_static
+          cd build_gfortran_static
+          make VERBOSE=1
+          bin/example

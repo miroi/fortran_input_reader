@@ -10,7 +10,7 @@
 # Notes:
 # Where "ps:" is used commands are executed in PowerShell
 ##
-##   Script assembled by Ivan Hrasko
+##   Script assembled by Ivan Hrasko, adapted by Miro Ilias
 ##
 
 # build version format: 1.0.1, 1.0.2, ...
@@ -48,26 +48,35 @@ build_script:
 
 # add compilers binary dir to path
 - set path=%path%;C:\software\mingw64\bin
-
-# download and upgrade pip
-- ps: wget https://bootstrap.pypa.io/get-pip.py -OutFile get-pip.py
-- python get-pip.py
-
-# install py.test
-- pip install pytest
+- echo %path%
 
 # go back to project source dir
 - cd %APPVEYOR_BUILD_FOLDER%
+- cd cmake
+- ps: wget https://github.com/scisoft/autocmake/raw/master/update.py -OutFile update.py
 
 test_script:
-# show environment
-- echo %path%
-- cd cmake
+# 
 - python update.py --self
 - python update.py ..
 - cd ..
-- python setup.py --fc=gfortran --int64 --coverage
-- cd build
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64 --static  --coverage  build_gfortran_int64_coverage_static
+- cd build_gfortran_int64_coverage_static
 - mingw32-make
-# run testing example
-- bin/example
+- bin\example.exe
+- cd ..
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --static build_gfortran_static
+- cd build_gfortran_static
+- mingw32-make
+- bin\example.exe
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64  build_gfortran_int64
+- cd build_gfortran_int64
+- mingw32-make
+- bin\example.exe
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
+- cd build_gfortran
+- mingw32-make
+- bin\example.exe

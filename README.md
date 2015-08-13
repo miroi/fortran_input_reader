@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/miroi/fortran_input_reader.svg?branch=master)](https://travis-ci.org/miroi/fortran_input_reader/builds)
-[![Circle CI](https://circleci.com/gh/miroi/fortran_input_reader.svg?style=svg)](https://circleci.com/gh/miroi/fortran_input_reader)
+[![wercker status](https://app.wercker.com/status/39f34b3fa3619e3b1ac48e9232ddb315/s "wercker status")](https://app.wercker.com/project/bykey/39f34b3fa3619e3b1ac48e9232ddb315)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/miroi/fortran_input_reader?branch=master&svg=true)](https://ci.appveyor.com/project/miroi/fortran_input_reader/history)
 [![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=master&service=github)](https://coveralls.io/github/miroi/fortran_input_reader?branch=master)
 
@@ -25,10 +25,13 @@ Buildup and testing
 The project buildup is based solely on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
 
-For the buildup (you need python, cmakem fortran) and subsequent run, type:
+For the buildup and run you need python, cmake and fortran programs. 
+
+Type:
 ```
  cd cmake
  wget https://github.com/scisoft/autocmake/raw/master/update.py
+ python update.py --self
  python update.py ..
  cd ..
  python setup.py 
