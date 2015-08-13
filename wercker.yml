@@ -13,8 +13,17 @@ build:
           python update.py --self
           python update.py ..
           cd ..
-          python ./setup.py --fc=gfortran --int64 --coverage --static
-          cd build
+          python ./setup.py --fc=gfortran --int64 --coverage --static build_gfortran_int64_coverage_static
+          cd build_gfortran_int64_coverage_static
           make VERBOSE=1
-          cd bin
-          ./example
+          bin/example
+          cd ..
+          python ./setup.py --fc=gfortran --int64 build_gfortran_int64
+          cd build_gfortran_int64
+          make VERBOSE=1
+          bin/example
+          cd ..
+          python ./setup.py --fc=gfortran --static  build_gfortran_static
+          cd build_gfortran_static
+          make VERBOSE=1
+          bin/example

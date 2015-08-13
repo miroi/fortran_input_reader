@@ -10,7 +10,7 @@
 # Notes:
 # Where "ps:" is used commands are executed in PowerShell
 ##
-##   Script assembled by Ivan Hrasko
+##   Script assembled by Ivan Hrasko, adapted by Miro Ilias
 ##
 
 # build version format: 1.0.1, 1.0.2, ...
@@ -60,9 +60,14 @@ test_script:
 - python update.py --self
 - python update.py ..
 - cd ..
-- python setup.py --fc=gfortran --int64 --static  --coverage
-- cd build
-- mingw32-make VERBOSE=1
-# run testing example
-- cd bin
-- example
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64 --static  --coverage  build_gfortran_int64_coverage_static
+- cd build_gfortran_int64_coverage_static
+- mingw32-make
+- bin/example.exe
+- cd ..
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran build_gfortran
+- cd build_gfortran
+- mingw32-make
+- bin/example.exe
+
