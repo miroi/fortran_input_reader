@@ -63,11 +63,20 @@ test_script:
 - python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64 --static  --coverage  build_gfortran_int64_coverage_static
 - cd build_gfortran_int64_coverage_static
 - mingw32-make
-- bin/example.exe
+- bin\example.exe
 - cd ..
 # next round
-- python setup.py --generator="MinGW Makefiles" --fc=gfortran build_gfortran
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --static build_gfortran_static
+- cd build_gfortran_static
+- mingw32-make
+- bin\example.exe
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64  build_gfortran_int64
+- cd build_gfortran_int64
+- mingw32-make
+- bin\example.exe
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
 - cd build_gfortran
 - mingw32-make
-- bin/example.exe
-
+- bin\example.exe
