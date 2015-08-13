@@ -6,11 +6,6 @@
 ## This script can be also adapted for travis-ci
 ##
 
-# include branches to test (master branch only)
-branches:
-    only:
-        - master
-
 # language settings - prepare Python environment
 language: python
 
