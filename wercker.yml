@@ -6,24 +6,33 @@ build:
     - install-packages:
         packages: "gfortran cmake wget"
     - script:
-        name: run setup configuration script
+        name: download update.py, initialize buildup environment
         code: |
           cd cmake
           wget https://github.com/scisoft/autocmake/raw/master/update.py
           python update.py --self
           python update.py ..
           cd ..
+    - script:
+        name: run buildup:gfortran,int64,coverage,static 
+        code: |
           python ./setup.py --fc=gfortran --int64 --coverage --static build_gfortran_int64_coverage_static
           cd build_gfortran_int64_coverage_static
-          make VERBOSE=0
+          make 
           bin/example
           cd ..
-          python ./setup.py --fc=gfortran --int64 build_gfortran_int64
+    - script:
+        name: run buildup:gfortran,int64
+        code: |
+          python ./setup.py --fc=gfortran --int64  build_gfortran_int64
           cd build_gfortran_int64
-          make VERBOSE=0
+          make 
           bin/example
           cd ..
+    - script:
+        name: run buildup:gfortran,static
+        code: |
           python ./setup.py --fc=gfortran --static  build_gfortran_static
           cd build_gfortran_static
-          make VERBOSE=0
+          make 
           bin/example
