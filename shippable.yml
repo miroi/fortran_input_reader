@@ -1,0 +1,61 @@
+## Simple buildup configuration file for the Shippable-CI service (https://app.shippable.com)
+##
+## see: http://docs.shippable.com/en/latest/samples/index.html
+## see: https://github.com/sympy/csympy/blob/b5b126d6465e6f6293edffb0342258b3fb8a30d3/.travis.yml
+##
+## This script can be also adapted for travis-ci
+##
+
+# include branches to test (master branch only)
+branches:
+    only:
+        - master
+
+# language settings - prepare Python environment
+language: python
+
+# install/upgrade needed software
+install:
+# install the newest versions
+    - sudo apt-get update
+    - sudo apt-get autoclean
+    - sudo apt-get clean
+    - sudo apt-get install gfortran cmake wget
+
+# system info
+before_script:
+# show info about available processors
+    - lscpu
+    - echo nproc=$(nproc)
+# show available disc space
+    - df -h
+# show available memory
+    - free -m
+    
+# configure, build optimized code and run 
+script:
+    - cd cmake
+    - wget https://github.com/scisoft/autocmake/raw/master/update.py
+    - python update.py --self
+    - python update.py ..
+    - cd ..
+    - python  ./setup.py --fc=gfortran build_gfortran
+    - cd build_gfortran
+    - make 
+    - bin/example
+# next round
+    - cd ..
+    - python  ./setup.py --fc=gfortran --static  build_gfortran_static
+    - cd  build_gfortran_static
+    - make 
+    - bin/example
+# next round
+    - cd ..
+    - python  ./setup.py --fc=gfortran --int64  build_gfortran_int64
+    - cd  build_gfortran_int64
+    - make 
+    - bin/example
+
+# turn off email notifications
+notifications:
+    email: false
