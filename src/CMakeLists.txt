@@ -18,3 +18,4 @@ add_executable(example example/example.F90 example/checkdata.F90)
 
 target_link_libraries(example input_reader)
 file(COPY example/EXAMPLE.INP DESTINATION ${PROJECT_BINARY_DIR}/bin)
+file(COPY example/EXAMPLE.INP DESTINATION ${PROJECT_BINARY_DIR})
