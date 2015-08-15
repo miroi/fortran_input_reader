@@ -60,8 +60,9 @@ test_script:
 - python update.py --self
 - python update.py ..
 - cd ..
-- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64 --static  --coverage  build_gfortran_int64_coverage_static
-- cd build_gfortran_int64_coverage_static
+# static+coverage is causing SegFault (?), try remove coverage...
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64 --static  build_gfortran_int64_static
+- cd build_gfortran_int64_static
 - mingw32-make
 - bin\example.exe
 - cd ..
@@ -78,5 +79,10 @@ test_script:
 # next round
 - python setup.py --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
 - cd build_gfortran
+- mingw32-make
+- bin\example.exe
+# next round
+- python setup.py --generator="MinGW Makefiles" --fc=gfortran --coverage build_gfortran_coverage
+- cd build_gfortran_coverage
 - mingw32-make
 - bin\example.exe
