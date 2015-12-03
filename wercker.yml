@@ -2,11 +2,12 @@
 ## Wercker CI yml script
 ##
 box: ubuntu
+#
 build:
   steps:
     - script: |
-        sudo apt-get update -y
-        sudo apt-get install cmake gfortran -y
+        sudo apt-get update 
+        #sudo apt-get install cmake gfortran -y
     - script:
         name: run buildup:gfortran,int64,coverage
         code: |
