@@ -35,12 +35,6 @@ script:
     - bin/example
 # next round
     - cd ..
-    - python  ./setup --fc=gfortran --static  build_gfortran_static
-    - cd  build_gfortran_static
-    - make 
-    - bin/example
-# next round
-    - cd ..
     - python  ./setup --fc=gfortran --int64  build_gfortran_int64
     - cd  build_gfortran_int64
     - make 
