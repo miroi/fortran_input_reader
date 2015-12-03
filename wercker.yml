@@ -1,4 +1,4 @@
-box: nodesource/trusty
+box: nodesource/wheezy
 build:
   steps:
   # Execute the bundle install step, a step provided by wercker
@@ -6,10 +6,10 @@ build:
     - install-packages:
         packages: "gfortran cmake wget"
     - script:
-        name: run buildup:gfortran,int64,coverage,static 
+        name: run buildup:gfortran,int64,coverage
         code: |
-          python ./setup --fc=gfortran --int64 --coverage --static build_gfortran_int64_coverage_static
-          cd build_gfortran_int64_coverage_static
+          python ./setup --fc=gfortran --int64 --coverage  build_gfortran_int64_coverage
+          cd build_gfortran_int64_coverage
           make 
           bin/example
           cd ..
@@ -22,9 +22,9 @@ build:
           bin/example
           cd ..
     - script:
-        name: run buildup:gfortran,static
+        name: run buildup:gfortran
         code: |
-          python ./setup --fc=gfortran --static  build_gfortran_static
-          cd build_gfortran_static
+          python ./setup --fc=gfortran build_gfortran
+          cd build_gfortran
           make 
           bin/example
