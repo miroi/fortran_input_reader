@@ -26,19 +26,11 @@ Buildup and testing
 The project buildup is based solely on the [*autocmake* project](https://github.com/scisoft/autocmake).
 
 
-For the buildup and run you need python, cmake and fortran programs. 
+For the buildup and run you need python, cmake and fortran software.
 
-To initialize autocmake buildup system, type:
+From the main directory launch, the setup command (see python setup --help):
 ```
- cd cmake
- wget https://github.com/scisoft/autocmake/raw/master/update.py
- python update.py --self
- python update.py ..
- cd ..
-```
-Then from the main directory launch the setup command (see python setup.py --help):
-```
- python setup.py --fc=gfortran build_gfortran
+ python setup --fc=gfortran build_gfortran
  cd build_gfortran
  make
  bin/example

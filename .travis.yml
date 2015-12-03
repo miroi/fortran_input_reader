@@ -5,12 +5,7 @@ install:
   - sudo apt-get install g++ cmake gfortran libblas-dev ggcov
   - sudo pip install pytest pep8 cpp-coveralls
 script:
-  - cd cmake
-  - wget https://github.com/scisoft/autocmake/raw/master/update.py
-  - python update.py --self
-  - python update.py ..
-  - cd ..
-  - python setup.py --fc=gfortran --static --int64 --coverage build_gfortran_static_int64_coverage
+  - python setup --fc=gfortran --static --int64 --coverage build_gfortran_static_int64_coverage
   - cd build_gfortran_static_int64_coverage
   - make VERBOSE=1
   - bin/example

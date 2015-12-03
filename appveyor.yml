@@ -50,41 +50,33 @@ build_script:
 - set path=%path%;C:\software\mingw64\bin
 - echo %path%
 
-# go back to project source dir
+# go to the project source dir
 - cd %APPVEYOR_BUILD_FOLDER%
-- cd cmake
-- ps: wget https://github.com/scisoft/autocmake/raw/master/update.py -OutFile update.py
-
-test_script:
-# 
-- python update.py --self
-- python update.py ..
-- cd ..
 # static+coverage is causing SegFault (?), try remove coverage...
 #- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64 --static  build_gfortran_int64_static
 #- cd build_gfortran_int64_static
 #- mingw32-make
 #- bin\example.exe
 #- cd ..
+#- python setup --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
+#- cd build_gfortran
+#- mingw32-make
+#- bin\example.exe
+#- cd ..
 # next round
-- python setup.py --generator="MinGW Makefiles" --fc=gfortran --static build_gfortran_static
-- cd build_gfortran_static
+- python setup --generator="MinGW Makefiles" --fc=gfortran --int64  build_gfortran_int64
+- cd build_gfortran_int64
 - mingw32-make
 - bin\example.exe
 - cd ..
 # next round
-- python setup.py --generator="MinGW Makefiles" --fc=gfortran --int64  build_gfortran_int64
-- cd build_gfortran_int64
-- mingw32-make
-- bin\example.exe
-# next round
-- python setup.py --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
+- python setup --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
 - cd build_gfortran
 - mingw32-make
 - bin\example.exe
 - cd ..
 # next round
-- python setup.py --generator="MinGW Makefiles" --fc=gfortran --coverage build_gfortran_coverage
+- python setup --generator="MinGW Makefiles" --fc=gfortran --coverage build_gfortran_coverage
 - cd build_gfortran_coverage
 - mingw32-make
 - bin\example.exe

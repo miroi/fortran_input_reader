@@ -29,24 +29,19 @@ before_script:
     
 # configure, build optimized code and run 
 script:
-    - cd cmake
-    - wget https://github.com/scisoft/autocmake/raw/master/update.py
-    - python update.py --self
-    - python update.py ..
-    - cd ..
-    - python  ./setup.py --fc=gfortran build_gfortran
+    - python  ./setup --fc=gfortran build_gfortran
     - cd build_gfortran
     - make 
     - bin/example
 # next round
     - cd ..
-    - python  ./setup.py --fc=gfortran --static  build_gfortran_static
+    - python  ./setup --fc=gfortran --static  build_gfortran_static
     - cd  build_gfortran_static
     - make 
     - bin/example
 # next round
     - cd ..
-    - python  ./setup.py --fc=gfortran --int64  build_gfortran_int64
+    - python  ./setup --fc=gfortran --int64  build_gfortran_int64
     - cd  build_gfortran_int64
     - make 
     - bin/example
