@@ -4,9 +4,9 @@
 box: ubuntu
 build:
   steps:
-  # install needed packages
-    - install-packages:
-        packages: gfortran cmake python
+    - script: |
+        sudo apt-get update -y
+        sudo apt-get install cmake gfortran -y
     - script:
         name: run buildup:gfortran,int64,coverage
         code: |
