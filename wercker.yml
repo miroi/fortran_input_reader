@@ -1,7 +1,7 @@
 ##
 ## Wercker CI yml script
 ##
-box: wercker/ubuntu
+box: ubuntu
 build:
   steps:
   # install needed packages
