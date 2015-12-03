@@ -1,4 +1,6 @@
-box: wercker/python
+##
+##
+##
 
 build:
   steps:
