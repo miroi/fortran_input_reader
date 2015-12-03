@@ -1,10 +1,10 @@
 box: wercker/python
+
 build:
   steps:
-  # Execute the bundle install step, a step provided by wercker
-    - bundle-install
+  # install needed packages
     - install-packages:
-        packages: "gfortran cmake"
+        packages: "gfortran gcc cmake make"
     - script:
         name: run buildup:gfortran,int64,coverage
         code: |
