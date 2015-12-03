@@ -1,7 +1,7 @@
 ##
 ## Wercker CI yml script
 ##
-box: default
+box: python
 build:
   steps:
   # install needed packages
