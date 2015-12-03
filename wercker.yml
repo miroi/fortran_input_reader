@@ -1,12 +1,12 @@
 ##
 ## Wercker CI yml script
 ##
-box: python
+box: ubuntu
 build:
   steps:
   # install needed packages
     - install-packages:
-        packages: gfortran cmake
+        packages: gfortran cmake python
     - script:
         name: run buildup:gfortran,int64,coverage
         code: |
