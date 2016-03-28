@@ -64,11 +64,11 @@ build_script:
 #- bin\example.exe
 #- cd ..
 # next round
-- python setup --generator="MinGW Makefiles" --fc=gfortran --int64  build_gfortran_int64
-- cd build_gfortran_int64
-- mingw32-make
-- bin\example.exe
-- cd ..
+#- python setup --generator="MinGW Makefiles" --fc=gfortran --int64  build_gfortran_int64
+#- cd build_gfortran_int64
+#- mingw32-make
+#- bin\example.exe
+#- cd ..
 # next round
 - python setup --generator="MinGW Makefiles" --fc=gfortran  build_gfortran
 - cd build_gfortran
