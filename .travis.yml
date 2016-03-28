@@ -1,8 +1,9 @@
 language: fortran
+sudo: required
+dist: trusty
+compiler: 
+- gfortran
 install:
-  - sudo apt-add-repository --yes ppa:ubuntu-toolchain-r/test
-  - sudo apt-get update
-  - sudo apt-get install g++ cmake gfortran libblas-dev ggcov
   - sudo pip install pytest pep8 cpp-coveralls
 script:
   - python setup --fc=gfortran --int64 --coverage build_gfortran_int64_coverage
