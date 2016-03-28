@@ -6,6 +6,7 @@ compiler:
 - gfortran
 install:
   - sudo pip install pytest pep8 cpp-coveralls
+  - sudo apt-get install gfortran
 script:
   - python setup --fc=gfortran --int64 --coverage build_gfortran_int64_coverage
   - cd build_gfortran_int64_coverage
