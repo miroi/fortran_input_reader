@@ -2,6 +2,7 @@ language: fortran
 sudo: required
 dist: trusty
 compiler: 
+- gcc
 - gfortran
 install:
   - sudo pip install pytest pep8 cpp-coveralls
