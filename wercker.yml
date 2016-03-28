@@ -1,19 +1,20 @@
 ##
 ## Wercker CI yml script
 ##
-box: ubuntu
+box: nodesource/trusty
 #
 build:
   steps:
-    - script: |
-        sudo apt-get update 
-        #sudo apt-get install cmake gfortran -y
+   # Execute the bundle install step, a step provided by wercker
+    - bundle-install
+    - install-packages:
+        packages: "gfortran cmake"
     - script:
         name: run buildup:gfortran,int64,coverage
         code: |
           python ./setup --fc=gfortran --int64 --coverage  build_gfortran_int64_coverage
           cd build_gfortran_int64_coverage
-          make 
+          make VERBOSE=1
           bin/example
           cd ..
     - script:
@@ -21,7 +22,7 @@ build:
         code: |
           python ./setup --fc=gfortran --int64  build_gfortran_int64
           cd build_gfortran_int64
-          make 
+          make VERBOSE=1
           bin/example
           cd ..
     - script:
@@ -29,5 +30,5 @@ build:
         code: |
           python ./setup --fc=gfortran build_gfortran
           cd build_gfortran
-          make 
+          make VERBOSE=1
           bin/example
