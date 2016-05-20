@@ -33,7 +33,6 @@ test:
         - python ./setup  --fc=gfortran
 # build with make, build with ctest makes impossible to submit more test commands into one entry on dashboard
         - make VERBOSE=1: { pwd: build }
-        - make Experimental: { pwd: build }
 # ldd - show dirac.x dependencies
         - ldd bin/example: { pwd: build }
 # run tests

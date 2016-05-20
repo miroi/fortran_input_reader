@@ -3,6 +3,7 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/miroi/fortran_input_reader?branch=master&svg=true)](https://ci.appveyor.com/project/miroi/fortran_input_reader/history)
 [![Coverage Status](https://coveralls.io/repos/miroi/fortran_input_reader/badge.svg?branch=master&service=github)](https://coveralls.io/github/miroi/fortran_input_reader?branch=master)
 [![shippable status](https://api.shippable.com/projects/55c5fa6fedd7f2c05299e675/badge?branchName=master)](https://app.shippable.com/projects/55c5fa6fedd7f2c05299e675/builds/latest)
+[![CircleCI](https://circleci.com/gh/miroi/fortran_input_reader/tree/master.svg?style=svg)](https://circleci.com/gh/miroi/fortran_input_reader/tree/master)
 
 
 Fortran Input Reader
@@ -12,7 +13,7 @@ All-Fortran90 reader of most common input keywords types (strings, numbers, numb
 
 This project also serves as the comprehensive (unit) tester of the standalone Fortran module (library).
 
-Two files for free distribution into your codes are 
+The two files for free distribution into your codes are 
 [input_reader.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/input_reader.F90) (as module)
 and [
 parse_input.F90](https://github.com/miroi/fortran_input_reader/blob/master/src/lib/parse_input.F90) (as subroutine).
